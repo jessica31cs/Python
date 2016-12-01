@@ -1,3 +1,5 @@
+#dictionary: keys are the words of song lyrics and the values are a list of the list number it appears on
+#hint: line 0 is the first line
 def lineIndex(fName):
     inF = open(fName)
     d = {}
