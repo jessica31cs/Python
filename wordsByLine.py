@@ -1,3 +1,6 @@
+#output: a word followed by a colon followed by the number of times it appears in the specific line
+#ex: line: one fish two fish ---> output: one:1 fish:2 two:1
+
 #First way
 def wordsByLine(inFile, outFile):
     inF = open(inFile, 'r')
@@ -26,12 +29,4 @@ def wordsByLine(inFile, outFile):
         outF.write("\n")
     inF.close()
     outF.close()
-#wordsByLine("words.txt","out.txt")
-
-
-
-
-
-        
-
-            
+#wordsByLine("words.txt","out.txt")  
