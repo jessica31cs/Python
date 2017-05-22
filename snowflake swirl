@@ -1,0 +1,21 @@
+#making a snow flake as a base and then repeating the snowflake to follow a pattern in a swirl increasing in size
+def snowflake(t, legLength):
+    for i in range(6):
+        t.forward(legLength)
+        t.circle(1)
+        t.back(legLength)
+        t.left(60)
+
+def snowflakes(t, length, angle, incr, numFlakes):
+    for i in range(numFlakes):
+        snowflake(t, length)
+        t.penup()
+        t.forward(length*2)
+        t.pendown()
+        t.left(angle)
+        length += incr
+
+import turtle
+t = turtle.Turtle()
+s = turtle.Screen()
+snowflakes(t, 10, 45, 10, 15)
