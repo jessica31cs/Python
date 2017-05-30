@@ -1,0 +1,30 @@
+#entry box to find what day was the inputted date.
+#ex: user input: May 29, 2017 ---> entry box displays: Monday May 29, 2017
+
+from tkinter import Tk, Button, Label, Entry, END
+from tkinter.messagebox import showinfo
+from time import strftime,strptime, localtime
+#-----------------------------------------------------------------------
+def enter():
+    global dateBox
+    date = dateBox.get()
+    weekday = strftime('%A', strptime(date, '%b %d, %Y'))
+    dateBox.delete(0, END)
+    dateBox.insert(0, weekday + " " + date)
+    
+def clear():
+    global dateBox
+    dateBox.delete(0, END)
+
+root = Tk()
+label = Label(root, text = "Enter date ")
+label.grid(row = 0, column = 0)
+
+dateBox = Entry(root)
+dateBox.grid(row = 0, column = 1)
+
+b1 = Button(root, text = "Enter", command = enter)
+b1.grid(row = 1, column = 0)
+
+b2 = Button(root, text = "Clear", command = clear)
+b2.grid(row = 1, column = 1)
