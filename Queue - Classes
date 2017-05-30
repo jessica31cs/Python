@@ -1,0 +1,35 @@
+#creating a class that acts like a queue
+
+class EmptyQueueError(Exception):
+        pass
+class Queue:
+        def __init__(self):
+                self.qlist = []
+        def isEmpty(self):
+                return len(self.qlist)==0
+        def enqueue(self, thing):
+                self.qlist.append(thing)
+        def dequeue(self):
+                if not(self.isEmpty()):
+                        self.qlist.remove(self.qlist[0])
+                else:
+                        #raise EmptyQueueError("dequeue from empty queue")
+                        print("no more things in the queue")
+        def printQ(self):
+                for i in self.qlist:
+                        print(i, end = " ")
+                print()
+q = Queue()
+q.enqueue("a")
+q.enqueue("b")
+q.enqueue("c")
+q.enqueue("d")
+q.printQ()
+
+
+q.dequeue()
+q.dequeue()
+q.dequeue()
+q.dequeue()
+q.dequeue()
+q.printQ()
