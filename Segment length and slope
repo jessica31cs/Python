@@ -1,0 +1,25 @@
+import math
+class Point:
+    def __init__(self, xcoor = 0, ycoor = 0):
+        self.x = xcoor
+        self.y = ycoor
+class Segment(Point):
+    def __init__(self, point1, point2):
+        self.p1 = point1
+        self.p2 = point2
+    def length(self):
+        a = (self.p1.x - self.p2.x)**2
+        b = (self.p1.y - self.p2.y)**2
+        return math.sqrt(a+b)
+    def slope(self):
+        dy = self.p1.y - self.p2.y
+        dx = self.p1.x - self.p2.x
+        if dx != 0:
+            return dy/dx
+        return "cannot divide by 0"
+p1 = Point(0,0)
+p2 = Point(3,4)
+s = Segment(p1, p2)
+print("Length of segment :",s.length())
+print("Slope :",s.slope())
+    
