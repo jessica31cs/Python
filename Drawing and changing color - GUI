@@ -1,0 +1,100 @@
+from tkinter import Tk, Canvas, Frame, Button, SUNKEN, LEFT, RIGHT, BOTTOM, Entry
+root = Tk()
+color = "white"
+
+def up():
+    global y, canvas, color
+    canvas.create_oval(x,y,x,y-50 , fill = color)
+    y -= 50
+def down():
+    global y, canvas
+    canvas.create_oval(x,y,x,y+50, fill = color)
+    y += 50
+#-------------------------------------------
+def left():
+    global x, canvas
+    canvas.create_oval(x,y,x-50,y, fill = color)
+    x -= 50
+def right():
+    global x, canvas
+    canvas.create_oval(x,y,x+50,y, fill = color)
+    x += 50
+#-------------------------------------------
+def diagLD():
+    global x, y, canvas
+    canvas.create_oval(x,y, x+50, y+50, fill = color)
+    x += 50
+    y += 50
+def diagLU():
+    global x, y, canvas
+    canvas.create_oval(x,y, x-50, y-50, fill = color)
+    x -= 50
+    y -= 50
+#-------------------------------------------    
+def diagRD():
+    global x, y, canvas
+    canvas.create_oval(x, y, x-50, y+50, fill = color)
+    x -= 50
+    y += 50
+def diagRU():
+    global x, y, canvas
+    canvas.create_oval(x, y, x+50, y-50, fill = color)
+    x += 50
+    y -= 50
+#-------------------------------------------
+def clear():
+    global canvas, x, y
+    x,y = 150, 150
+    canvas.delete("all")
+
+def col():
+    global colorBox, color
+    color = colorBox.get()
+
+#----------------------------------------------------------------------------
+canvas = Canvas(root, height = 500, width = 500, bg = "white")
+canvas.pack(side = LEFT)
+
+b = Frame(root)
+b.pack(side = RIGHT)
+
+box = Frame(b)
+box.grid(row = 0, column = 0)
+#----------------------------------------------------------------------------
+button = Button(box, text = "up", command = up, activebackground = "yellow", bg = "white", fg ="black")
+button.grid(row = 0, column = 0, columnspan = 2)
+
+button2 = Button(box, text = "left", command = left, activebackground = "yellow", bg = "white")
+button2.grid(row = 1, column = 0)
+button3 = Button(box, text = "right", command = right, activebackground = "yellow", bg = "white")
+button3.grid(row = 1, column = 1)
+
+button4 = Button(box, text = "down", command = down, activebackground = "yellow", bg = "white")
+button4.grid(row = 2, column = 0, columnspan = 2)
+
+button5 = Button(box, text = "↖", command = diagLU, activebackground = "yellow", bg = "white")
+button5.grid(row = 3, column = 0)
+button6 = Button(box, text = "↗", command = diagRU, activebackground = "yellow", bg = "white")
+button6.grid(row = 3, column = 1)
+
+button7 = Button(box, text = "↙", command = diagRD, activebackground = "yellow", bg = "white")
+button7.grid(row = 4, column = 0)
+button8 = Button(box, text = "↘", command = diagLD, activebackground = "yellow", bg = "white")
+button8.grid(row = 4, column = 1)
+
+
+button9 = Button(box, text = "clear", command = clear, activebackground = "yellow", bg = "white")
+button9.grid(row = 5, column = 0, columnspan = 2)
+
+
+box2 = Frame(b)
+box2.grid(row = 2, column = 0)
+
+colorBox = Entry(box2)
+colorBox.grid(row = 0, column = 0)
+enterBox = Button(box2, text = "Enter Color", command = col, activebackground = "yellow", bg = "white")
+enterBox.grid(row = 1, column = 0)
+
+x,y = 150,150
+
+root.mainloop()
