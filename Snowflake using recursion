@@ -1,0 +1,21 @@
+def thing(n):
+    if n == 0:
+        t.down()
+        t.forward(5)
+        return
+    thing(n-1)
+    t.left(60)
+    thing(n-1)
+    t.right(120)
+    thing(n-1)
+    t.left(60)
+    thing(n-1)
+    
+import turtle
+t = turtle.Turtle()
+
+def snowflake(n):
+    for x in range(3):
+        thing(n)
+        t.right(120)
+snowflake(4)
